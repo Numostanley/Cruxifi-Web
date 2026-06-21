@@ -1,54 +1,53 @@
-"use client"
+"use client";
 
-import { motion, useReducedMotion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion";
 
-import { EASE } from "./reveal"
+import { EASE } from "./reveal";
 
 const values = [
   {
     title: "Reliability First",
-    body: "Systems must work when it matters most. Every Cruxifi primitive is designed around guaranteed behaviour under failure.",
+    body: "Systems must work when it matters most. Every Cruxifi primitive is designed around guaranteed behavior under failure.",
   },
   {
     title: "Simplicity",
-    body: "Complex problems should have clear, simple solutions. We absorb the hard parts so you don't have to think about them.",
+    body: "Complex problems should have clear, simple solutions. We absorb the hard parts so teams can keep moving.",
   },
   {
     title: "Developer Experience",
-    body: "Tools should reduce friction and save time. From a two-command local tunnel to one-click replay — every interaction is deliberate.",
+    body: "Tools should reduce friction and save time. From local tunnels to one-click replay, every interaction is deliberate.",
   },
   {
     title: "Intelligence",
-    body: "Systems should not just report problems — they should help explain and solve them. AI is a first-class feature, not an add-on.",
+    body: "Systems should not just report problems. They should help explain and solve them.",
   },
   {
     title: "Performance",
-    body: "Fast, efficient, and scalable by design. Infrastructure that can't keep up isn't infrastructure.",
+    body: "Fast, efficient, and scalable by design. Infrastructure that cannot keep up is not infrastructure.",
   },
-]
+];
 
 export function ValuesSection() {
-  const reduced = useReducedMotion()
+  const reduced = useReducedMotion();
 
   return (
-    <section id="values" className="border-t border-border px-6 py-28">
-      <div className="mx-auto max-w-5xl">
+    <section id="values" className="border-t border-border px-6 py-24 lg:py-32">
+      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[0.68fr_1.32fr]">
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 20 }}
           whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10% 0px" }}
           transition={reduced ? undefined : { duration: 0.55, ease: EASE }}
-          className="mb-14 text-center"
+          className="md:sticky md:top-28 md:self-start"
         >
-          <p className="mb-3 font-outfit text-xs tracking-widest text-accent uppercase">
+          <p className="mb-3 font-jetbrains text-[11px] tracking-[0.24em] text-accent uppercase">
             Values
           </p>
-          <h2 className="font-outfit text-4xl text-text-1">
+          <h2 className="font-outfit text-3xl font-medium leading-tight text-text-1 md:text-5xl">
             What we build on.
           </h2>
-          <p className="mx-auto mt-4 max-w-lg font-outfit text-sm leading-relaxed text-text-2">
-            These aren&apos;t slogans. They&apos;re constraints we apply to
-            every product and decision.
+          <p className="mt-5 max-w-sm font-outfit text-sm leading-7 text-text-2">
+            These are constraints we apply to every product and decision.
           </p>
         </motion.div>
 
@@ -59,27 +58,23 @@ export function ValuesSection() {
           transition={
             reduced ? undefined : { duration: 0.55, ease: EASE, delay: 0.1 }
           }
-          className="grid gap-4 sm:grid-cols-2"
+          className="divide-y divide-border border-y border-border"
         >
-          {values.map((v, i) => (
-            <div
-              key={v.title}
-              className={`rounded-xl border border-border bg-surface p-6 ${
-                i === values.length - 1 && values.length % 2 !== 0
-                  ? "sm:col-span-2"
-                  : ""
-              }`}
+          {values.map((value) => (
+            <article
+              key={value.title}
+              className="grid gap-3 py-6 sm:grid-cols-[0.42fr_1fr] sm:gap-8"
             >
-              <p className="mb-2 font-outfit text-sm font-medium text-text-1">
-                {v.title}
+              <h3 className="font-outfit text-base font-medium text-text-1">
+                {value.title}
+              </h3>
+              <p className="font-outfit text-sm leading-7 text-text-2">
+                {value.body}
               </p>
-              <p className="font-outfit text-sm leading-relaxed text-text-2">
-                {v.body}
-              </p>
-            </div>
+            </article>
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

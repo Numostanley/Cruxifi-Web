@@ -1,78 +1,94 @@
-"use client"
+"use client";
 
-import { motion, useReducedMotion } from "framer-motion"
-import { ArrowUpRight, CheckCircle, Clock } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, CheckCircle, Clock } from "lucide-react";
 
-import { EASE } from "./reveal"
+import { EASE } from "./reveal";
 
 const firmhookFeatures = [
   "Guaranteed delivery with automatic retries",
   "AI-powered error explanations",
-  "Local dev tunnel — no ngrok required",
+  "Local dev tunnel, no ngrok required",
   "One-click event replay",
-]
+];
 
 export function ProductsSection() {
-  const reduced = useReducedMotion()
+  const reduced = useReducedMotion();
 
   return (
-    <section id="products" className="border-t border-border px-6 py-28">
+    <section
+      id="products"
+      className="border-t border-border px-6 py-24 lg:py-32"
+    >
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 20 }}
           whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10% 0px" }}
           transition={reduced ? undefined : { duration: 0.55, ease: EASE }}
-          className="mb-14 text-center"
+          className="mb-14 grid gap-6 md:grid-cols-[0.76fr_1.24fr] md:items-end"
         >
-          <p className="mb-3 font-outfit text-xs tracking-widest text-accent uppercase">
-            Products
-          </p>
-          <h2 className="font-outfit text-4xl text-text-1">
-            Tools for the critical path.
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg font-outfit text-sm leading-relaxed text-text-2">
+          <div>
+            <p className="mb-3 font-jetbrains text-[11px] tracking-[0.24em] text-accent uppercase">
+              Products
+            </p>
+            <h2 className="font-outfit text-3xl font-medium leading-tight text-text-1 md:text-5xl">
+              Tools for the critical path.
+            </h2>
+          </div>
+          <p className="max-w-xl font-outfit text-sm leading-7 text-text-2 md:justify-self-end">
             Each Cruxifi product targets a specific class of hard problem in
             modern backend systems.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <motion.div
-            initial={reduced ? false : { opacity: 0, y: 16 }}
+        <div className="grid gap-5 md:grid-cols-[1.18fr_0.82fr]">
+          <motion.article
+            initial={reduced ? false : { opacity: 0, y: 18 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={
               reduced ? undefined : { duration: 0.55, ease: EASE, delay: 0.05 }
             }
-            className="flex flex-col rounded-xl border border-border bg-surface p-8"
+            className="quiet-panel group relative overflow-hidden rounded-xl border border-border p-7 transition-colors hover:border-accent/45 md:p-8"
           >
-            <div className="mb-6 flex items-start justify-between">
+            <div
+              aria-hidden="true"
+              className="absolute top-0 right-0 h-full w-px bg-accent/50 opacity-0 transition-opacity group-hover:opacity-100"
+            />
+            <div className="mb-9 flex items-start justify-between gap-5">
               <div>
-                <p className="mb-1 font-outfit text-xs tracking-widest text-accent uppercase">
+                <p className="mb-2 font-jetbrains text-[11px] tracking-[0.22em] text-accent uppercase">
                   Webhook Reliability Platform
                 </p>
-                <h3 className="font-outfit text-2xl text-text-1">FirmHook</h3>
+                <h3 className="font-outfit text-3xl font-medium text-text-1">
+                  FirmHook
+                </h3>
               </div>
-              <span className="rounded-full border border-success/30 bg-success/10 px-2.5 py-1 font-outfit text-[10px] text-success uppercase tracking-wider">
+              <span className="rounded-full border border-success/30 bg-success/10 px-2.5 py-1 font-jetbrains text-[10px] tracking-[0.16em] text-success uppercase">
                 Live
               </span>
             </div>
 
-            <p className="mb-6 font-outfit text-sm leading-relaxed text-text-2">
+            <p className="mb-8 max-w-lg font-outfit text-sm leading-7 text-text-2">
               Never lose a webhook again. FirmHook handles delivery, retries,
               AI-powered error explanations, and local development for
               webhook-driven systems.
             </p>
 
-            <div className="mb-8 space-y-2.5">
-              {firmhookFeatures.map((f) => (
-                <div key={f} className="flex items-start gap-2.5">
+            <div className="mb-9 grid gap-3 sm:grid-cols-2">
+              {firmhookFeatures.map((feature) => (
+                <div
+                  key={feature}
+                  className="flex items-start gap-2.5 border-t border-border pt-3"
+                >
                   <CheckCircle
                     size={14}
                     className="mt-0.5 shrink-0 text-accent"
                   />
-                  <span className="font-outfit text-sm text-text-2">{f}</span>
+                  <span className="font-outfit text-sm leading-6 text-text-2">
+                    {feature}
+                  </span>
                 </div>
               ))}
             </div>
@@ -81,48 +97,54 @@ export function ProductsSection() {
               href="https://firmhook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto inline-flex items-center gap-1.5 font-outfit text-sm text-accent hover:underline"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-2 font-outfit text-sm text-accent transition-colors hover:border-accent/50 hover:bg-accent/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               Visit firmhook.com
               <ArrowUpRight size={14} />
             </a>
-          </motion.div>
+          </motion.article>
 
-          <motion.div
-            initial={reduced ? false : { opacity: 0, y: 16 }}
+          <motion.aside
+            initial={reduced ? false : { opacity: 0, y: 18 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={
-              reduced ? undefined : { duration: 0.55, ease: EASE, delay: 0.15 }
+              reduced ? undefined : { duration: 0.55, ease: EASE, delay: 0.13 }
             }
-            className="flex flex-col rounded-xl border border-border border-dashed bg-surface/50 p-8"
+            className="relative flex flex-col justify-between overflow-hidden rounded-xl border border-dashed border-border bg-surface/35 p-7 md:p-8"
           >
-            <div className="mb-6 flex items-start justify-between">
-              <div>
-                <p className="mb-1 font-outfit text-xs tracking-widest text-text-2 uppercase">
-                  Coming soon
-                </p>
-                <h3 className="font-outfit text-2xl text-text-2">
-                  More tools
-                </h3>
+            <div>
+              <div className="mb-8 flex items-start justify-between gap-4">
+                <div>
+                  <p className="mb-2 font-jetbrains text-[11px] tracking-[0.2em] text-text-2 uppercase">
+                    Coming soon
+                  </p>
+                  <h3 className="font-outfit text-2xl font-medium text-text-1">
+                    More tools
+                  </h3>
+                </div>
+                <Clock size={18} className="text-accent/80" />
               </div>
-              <Clock size={18} className="text-text-2/50" />
+
+              <p className="font-outfit text-sm leading-7 text-text-2">
+                Cruxifi is building infrastructure for event delivery, API
+                observability, and system reliability. Each tool is designed
+                around reliability, simplicity, and intelligent debugging.
+              </p>
             </div>
 
-            <p className="font-outfit text-sm leading-relaxed text-text-2/70">
-              Cruxifi is building infrastructure for event delivery, API
-              observability, and system reliability. Each tool is designed
-              around the same principles: reliability, simplicity, and
-              intelligent debugging.
+            <p className="mt-10 border-t border-border pt-5 font-outfit text-xs leading-6 text-text-2">
+              Announcements at{" "}
+              <a
+                href="mailto:hello@cruxifi.com"
+                className="text-accent hover:underline"
+              >
+                hello@cruxifi.com
+              </a>
             </p>
-
-            <p className="mt-8 font-outfit text-xs text-text-2/50">
-              Stay tuned — announcements at{" "}
-              <span className="text-accent">hello@cruxifi.com</span>
-            </p>
-          </motion.div>
+          </motion.aside>
         </div>
       </div>
     </section>
-  )
+  );
 }
