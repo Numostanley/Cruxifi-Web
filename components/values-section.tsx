@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
+import { DecorativeRing, RingIntersectionBlur } from "./decorative-ring";
 import { EASE } from "./reveal";
 
 const values = [
@@ -31,8 +32,14 @@ export function ValuesSection() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="values" className="border-t border-border px-6 py-24 lg:py-32">
-      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[0.68fr_1.32fr]">
+    <section
+      id="values"
+      className="relative isolate overflow-hidden border-t border-border px-6 py-24 lg:py-32"
+    >
+      <DecorativeRing className="bottom-14 -left-56 h-[28rem] w-[28rem] opacity-35 md:-left-48 lg:-left-40" />
+      <RingIntersectionBlur className="bottom-16 left-0 h-80 w-[22rem] -translate-x-20 opacity-70" />
+
+      <div className="relative z-10 mx-auto grid max-w-5xl gap-12 md:grid-cols-[0.68fr_1.32fr]">
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 20 }}
           whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
