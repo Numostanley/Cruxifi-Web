@@ -24,7 +24,7 @@ export function HeroSection() {
         initial={reduced ? false : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 0.6 }}
         transition={reduced ? undefined : { duration: 0.8, ease: EASE }}
-        className="pointer-events-none absolute top-[18%] left-1/2 h-96 w-[24rem] -translate-x-1/2 rounded-full border border-accent/20 shadow-[0_0_90px_rgb(0_233_161/0.20),inset_0_0_70px_rgb(0_233_161/0.06)] sm:h-136 sm:w-136"
+        className="pointer-events-none absolute top-[18%] left-1/2 h-96 w-[24rem] -translate-x-1/2 rounded-full border border-accent/20 shadow-[0_0_60px_rgb(0_233_161/0.40),0_0_140px_rgb(0_233_161/0.22),inset_0_0_90px_rgb(2_6_24/0.10),inset_0_0_70px_rgb(0_233_161/0.08)] dark:shadow-[0_0_90px_rgb(0_233_161/0.20),inset_0_0_100px_rgb(0_0_0/0.55),inset_0_0_70px_rgb(0_233_161/0.06)] sm:h-136 sm:w-136"
       />
 
       <motion.div
