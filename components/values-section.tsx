@@ -47,7 +47,9 @@ export function ValuesSection() {
             What we build on.
           </h2>
           <p className="mt-5 max-w-sm font-outfit text-sm leading-7 text-text-2">
-            These are constraints we apply to every product and decision.
+            These aren&apos;t slogans. They&apos;re the constraints we apply to
+            every product decision — because infrastructure that compromises on
+            any of them eventually fails the people who depend on it.
           </p>
         </motion.div>
 

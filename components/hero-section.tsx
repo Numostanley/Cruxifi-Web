@@ -60,8 +60,9 @@ export function HeroSection() {
           }
           className="mx-auto mb-10 max-w-2xl font-outfit text-base leading-8 text-text-2 md:text-lg"
         >
-          Cruxifi builds focused infrastructure products for reliable delivery,
-          observability, and intelligent debugging.
+          The hardest problems in software are also the most important ones.
+          Cruxifi builds developer-first infrastructure for the parts of your
+          stack that can&apos;t fail.
         </motion.p>
 
         <motion.a

@@ -37,8 +37,9 @@ export function ProductsSection() {
             </h2>
           </div>
           <p className="max-w-xl font-outfit text-sm leading-7 text-text-2 md:justify-self-end">
-            Each Cruxifi product targets a specific class of hard problem in
-            modern backend systems.
+            Each Cruxifi product targets one specific, hard problem in modern
+            backend systems — the kind that causes outages, lost data, and 3am
+            pages.
           </p>
         </motion.div>
 
@@ -127,9 +128,10 @@ export function ProductsSection() {
               </div>
 
               <p className="font-outfit text-sm leading-7 text-text-2">
-                Cruxifi is building infrastructure for event delivery, API
-                observability, and system reliability. Each tool is designed
-                around reliability, simplicity, and intelligent debugging.
+                Reliable event delivery is just the beginning. We&apos;re
+                working on tools for API observability, system health
+                monitoring, and intelligent failure analysis — each built on
+                the same foundation.
               </p>
             </div>
 
