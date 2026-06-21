@@ -1,37 +1,55 @@
-"use client"
+"use client";
 
-import { motion, useReducedMotion } from "framer-motion"
-import { ArrowDown } from "lucide-react"
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
-import { EASE } from "./reveal"
+import { EASE } from "./reveal";
 
 export function HeroSection() {
-  const reduced = useReducedMotion()
+  const reduced = useReducedMotion();
+  const { scrollY } = useScroll();
+  const ringY = useTransform(scrollY, [0, 500], [0, -250]);
+  const textY = useTransform(scrollY, [0, 700], [0, -10]);
 
   return (
-    <section className="landing-grid relative flex min-h-screen items-center px-6 pt-20">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg" />
+    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-20">
+      <motion.div
+        aria-hidden="true"
+        style={{ y: reduced ? 0 : ringY }}
+        initial={reduced ? false : { opacity: 0 }}
+        animate={reduced ? undefined : { opacity: 0.6 }}
+        transition={reduced ? undefined : { duration: 0.8, ease: EASE }}
+        className="pointer-events-none absolute top-[18%] left-1/2 h-96 w-[24rem] -translate-x-1/2 rounded-full border border-accent/20 shadow-[0_0_90px_rgb(0_233_161/0.20),inset_0_0_70px_rgb(0_233_161/0.06)] sm:h-136 sm:w-136"
+      />
 
-      <div className="relative mx-auto max-w-5xl py-32 text-center">
+      <motion.div
+        style={{ y: reduced ? 0 : textY }}
+        className="relative mx-auto max-w-5xl py-28 text-center"
+      >
         <motion.p
           initial={reduced ? false : { opacity: 0, y: 12 }}
           animate={reduced ? undefined : { opacity: 1, y: 0 }}
           transition={reduced ? undefined : { duration: 0.5, ease: EASE }}
-          className="mb-6 font-outfit text-xs tracking-widest text-accent uppercase"
+          className="mb-6 font-jetbrains text-[11px] tracking-[0.24em] text-accent uppercase"
         >
           Developer-first infrastructure
         </motion.p>
 
         <motion.h1
-          initial={reduced ? false : { opacity: 0, y: 20 }}
+          initial={reduced ? false : { opacity: 0, y: 18 }}
           animate={reduced ? undefined : { opacity: 1, y: 0 }}
           transition={
             reduced ? undefined : { duration: 0.65, ease: EASE, delay: 0.1 }
           }
-          className="mb-6 font-outfit text-5xl leading-tight text-text-1 md:text-7xl"
+          className="mx-auto mb-7 max-w-4xl font-outfit text-[clamp(3.3rem,8vw,6.8rem)] font-medium leading-[0.96] text-text-1"
         >
           Infrastructure for{" "}
-          <span className="text-glow">critical systems.</span>
+          <span className="text-accent">critical systems.</span>
         </motion.h1>
 
         <motion.p
@@ -40,11 +58,10 @@ export function HeroSection() {
           transition={
             reduced ? undefined : { duration: 0.6, ease: EASE, delay: 0.2 }
           }
-          className="mx-auto mb-10 max-w-xl font-outfit text-base leading-7 text-text-2 md:text-lg"
+          className="mx-auto mb-10 max-w-2xl font-outfit text-base leading-8 text-text-2 md:text-lg"
         >
-          Cruxifi builds developer-first tools for the most important parts of
-          your stack — reliable delivery, observability, and intelligent
-          debugging.
+          Cruxifi builds focused infrastructure products for reliable delivery,
+          observability, and intelligent debugging.
         </motion.p>
 
         <motion.a
@@ -54,12 +71,15 @@ export function HeroSection() {
           transition={
             reduced ? undefined : { duration: 0.5, ease: EASE, delay: 0.3 }
           }
-          className="inline-flex items-center gap-2 rounded-md border border-accent bg-accent/10 px-6 py-3 font-outfit text-sm text-accent transition-colors hover:bg-accent/20"
+          className="group inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-5 py-2.5 font-outfit text-sm text-text-1 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         >
           See our products
-          <ArrowDown size={15} />
+          <ArrowDown
+            size={15}
+            className="transition-transform group-hover:translate-y-0.5"
+          />
         </motion.a>
-      </div>
+      </motion.div>
     </section>
-  )
+  );
 }
