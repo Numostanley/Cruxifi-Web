@@ -1,9 +1,17 @@
 import { ArrowUpRight } from "lucide-react";
 
+import { DecorativeRing, RingIntersectionBlur } from "./decorative-ring";
+
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border px-6 py-12">
-      <div className="mx-auto max-w-5xl">
+    <footer
+      id="contact"
+      className="relative isolate overflow-hidden border-t border-border px-6 py-12"
+    >
+      <DecorativeRing className="-right-28 -bottom-44 h-80 w-80 opacity-20" />
+      <RingIntersectionBlur className="-right-8 bottom-0 h-40 w-72 opacity-70" />
+
+      <div className="relative z-10 mx-auto max-w-5xl">
         <div className="mb-8 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div>
             <p className="mb-1 font-outfit text-xl font-semibold text-accent">

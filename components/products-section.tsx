@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, CheckCircle, Clock } from "lucide-react";
 
+import { DecorativeRing, RingIntersectionBlur } from "./decorative-ring";
 import { EASE } from "./reveal";
 
 const firmhookFeatures = [
@@ -18,9 +19,12 @@ export function ProductsSection() {
   return (
     <section
       id="products"
-      className="border-t border-border px-6 py-24 lg:py-32"
+      className="relative isolate overflow-hidden border-t border-border px-6 py-24 lg:py-32"
     >
-      <div className="mx-auto max-w-5xl">
+      <DecorativeRing className="top-20 -right-52 h-[26rem] w-[26rem] opacity-45 md:-right-44 lg:-right-36" />
+      <RingIntersectionBlur className="top-16 right-0 h-80 w-[22rem] translate-x-20 opacity-75" />
+
+      <div className="relative z-10 mx-auto max-w-5xl">
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 20 }}
           whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
