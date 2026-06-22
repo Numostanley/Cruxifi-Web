@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
-import { RingIntersectionBlur, decorativeRingClass } from "./decorative-ring";
+import { decorativeRingClass } from "./decorative-ring";
 import { EASE } from "./reveal";
 
 export function HeroSection() {
@@ -25,10 +25,8 @@ export function HeroSection() {
         initial={reduced ? false : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 0.6 }}
         transition={reduced ? undefined : { duration: 0.8, ease: EASE }}
-        className={`${decorativeRingClass} top-[18%] left-1/2 h-90 max-h-96 w-[calc(100%-20px)] max-w-[24rem] -translate-x-1/2 sm:h-136 sm:w-136`}
-      >
-      </motion.div>
-
+        className={`${decorativeRingClass} top-[18%] left-1/2 aspect-square w-[min(90vw,68vh,24rem)] -translate-x-1/2`}
+      />
 
       <motion.div
         style={{ y: reduced ? 0 : textY }}
@@ -49,7 +47,7 @@ export function HeroSection() {
           transition={
             reduced ? undefined : { duration: 0.65, ease: EASE, delay: 0.1 }
           }
-          className="mx-auto mb-7 max-w-4xl font-outfit text-[clamp(2.35rem,12vw,6.8rem)] font-medium leading-[1.02] text-text-1 sm:leading-[0.96]"
+          className="mx-auto mb-7 max-w-4xl font-outfit text-[clamp(2.35rem,12vw,5.5rem)] font-medium leading-[1.02] text-text-1 sm:leading-[0.96]"
         >
           Infrastructure for{" "}
           <span className="text-accent">critical systems.</span>
@@ -61,7 +59,7 @@ export function HeroSection() {
           transition={
             reduced ? undefined : { duration: 0.6, ease: EASE, delay: 0.2 }
           }
-          className="mx-auto mb-10 max-w-2xl font-outfit text-base leading-8 text-text-2 md:text-lg"
+          className="mx-auto mb-10 max-w-160 font-outfit text-[clamp(0.8125rem,12vw,1rem)] text-text-1 leading-[180%]"
         >
           The hardest problems in software are also the most important ones.
           Cruxifi builds developer-first infrastructure for the parts of your
